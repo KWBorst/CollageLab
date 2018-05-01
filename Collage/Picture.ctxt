@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=fileName
+comment0.target=Picture(java.lang.String)
+comment0.text=\r\n\ Constructor\ that\ takes\ a\ file\ name\ and\ creates\ the\ picture\r\n\ @param\ fileName\ the\ name\ of\ the\ file\ to\ create\ the\ picture\ from\r\n
+comment1.params=width\ height
+comment1.target=Picture(int,\ int)
+comment1.text=\r\n\ Constructor\ that\ takes\ the\ width\ and\ height\r\n\ @param\ width\ the\ width\ of\ the\ desired\ picture\r\n\ @param\ height\ the\ height\ of\ the\ desired\ picture\r\n
+comment2.params=
+comment2.target=void\ gray()
+comment3.params=
+comment3.target=void\ nega()
+comment4.params=xOff\ yOff\ sourceFile
+comment4.target=void\ copy(int,\ int,\ java.lang.String)
+comment5.params=sourceFile
+comment5.target=void\ mirrorVertical(java.lang.String)
+comment6.params=sourceFile
+comment6.target=void\ mirrorHorizontal(java.lang.String)
+comment7.params=sourceFile
+comment7.target=void\ copySmaller(java.lang.String)
+comment8.params=
+comment8.target=java.lang.String\ toString()
+comment8.text=\r\n\ Method\ to\ return\ a\ string\ with\ information\ about\ this\ picture.\r\n\ @return\ a\ string\ with\ information\ about\ the\ picture\ such\ as\ fileName,\r\n\ height\ and\ width.\r\n
+numComments=9
