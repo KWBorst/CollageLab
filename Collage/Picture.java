@@ -54,6 +54,25 @@ public class Picture extends SimplePicture
        }
    }
    
+   public void colorSwap()
+   {
+    Pixel[] pixelArray  = this.getPixels();
+    int val, val2, val3;  
+       
+    for (Pixel pixelObj : pixelArray)
+    {
+        //gets the color value for the current pixel
+        val = pixelObj.getRed();
+        val2 = pixelObj.getBlue();
+        val3 = pixelObj.getGreen();
+        
+        //swaps the green and red values
+        pixelObj.setRed(val3);
+        pixelObj.setGreen(val2);
+        pixelObj.setBlue(val);
+    }
+   }
+
    public void nega()
    {
      int val, val2, val3;
