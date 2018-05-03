@@ -92,6 +92,43 @@ public class Picture extends SimplePicture
      }  
    }
 
+   public void blend(String blender)
+   {
+       Picture mixPicture = new Picture(blender);
+       
+       Pixel sourcePixel = null;
+       Pixel targetPixel = null;
+       int sourceColor = 0;
+       int targetColor = 0;
+       int blendColor = 0;
+       
+        for(int sourceX = 0, targetX = 0; sourceX < mixPicture.getWidth(); sourceX++, targetX++)
+       {
+           //loop through the rows
+           for (int sourceY = 0, targetY = 0; sourceY < mixPicture.getHeight(); sourceY++, targetY++)
+           {
+               //set the target pixel color to the source pixel color
+               sourcePixel = mixPicture.getPixel(sourceX, sourceY);
+               targetPixel = this.getPixel(targetX, targetY);
+               
+               sourceColor = sourcePixel.getRed();
+               targetColor = targetPixel.getRed();
+               blendColor = (sourceColor + targetColor) / 2;
+               targetPixel.setRed(blendColor);
+               
+               sourceColor = sourcePixel.getBlue();
+               targetColor = targetPixel.getBlue();
+               blendColor = (sourceColor + targetColor) / 2;
+               targetPixel.setBlue(blendColor);
+               
+               sourceColor = sourcePixel.getGreen();
+               targetColor = targetPixel.getGreen();
+               blendColor = (sourceColor + targetColor) / 2;
+               targetPixel.setGreen(blendColor);
+           }
+       }
+   }
+   
    public void copy(int xOff, int yOff, String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -174,6 +211,32 @@ public class Picture extends SimplePicture
            }
        }
    }
+   
+   public void recursion(String sourceFile, int add)
+   {
+       Picture sourcePicture = new Picture(sourceFile);
+       
+       Pixel sourcePixel = null;
+       Pixel targetPixel = null;
+       
+       for(int sourceX = 0, targetX = 0; sourceX < sourcePicture.getWidth(); sourceX= sourceX + add, targetX++)
+       {
+           //loop through the rows
+           for (int sourceY = 0, targetY = 0; sourceY < sourcePicture.getHeight(); sourceY= sourceY + add, targetY++)
+           {
+               //set the target pixel color to the source pixel color
+               sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
+               targetPixel = this.getPixel(targetX, targetY);
+               targetPixel.setColor(sourcePixel.getColor());
+           }
+       }
+       
+       if (add == 128)
+            return;
+       else
+            recursion(sourceFile, add * 2);
+   }
+   
    
   /**
    * Method to return a string with information about this picture.

@@ -7,6 +7,8 @@ public class Creator
         Picture picture2 = new Picture("images/tearingmeapartlisa.jpg");
         Picture picture3 = new Picture("images/tearingmeapartlisa.jpg");
         Picture picture4 = new Picture("images/tearingmeapartlisa.jpg");
+        Picture picture5 = new Picture("images/tearingmeapartlisa.jpg");
+        Picture picture6 = new Picture("images/tearingmeapartlisa.jpg");
         
         //picture1.explore();
         canvas.copy(35, 40, "images/tearingmeapartlisa.jpg"); //41 should be height of border on border
@@ -26,6 +28,16 @@ public class Creator
         //picture4.explore();
         //picture4.write("images/horcoltear.jpg");
         canvas.copy(35, 913, "images/horcoltear.jpg");
+        
+        //picture5.recursion("images/tearingmeapartlisa.jpg", 2);
+        //picture5.explore();
+        //picture5.write("images/infinitetear.jpg");
+        canvas.copy(1345, 913, "images/infinitetear.jpg");
+        
+        //picture6.blend("images/Ohhaimark.jpg");
+        //picture6.explore();
+        //picture6.write("images/Marktear.jpg");
+        canvas.copy(2655, 913, "images/Marktear.jpg");
         
         canvas.explore();
         
