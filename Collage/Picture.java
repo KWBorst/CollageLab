@@ -73,6 +73,48 @@ public class Picture extends SimplePicture
     }
    }
 
+   public void shep()
+   {
+       Pixel[] pixelArray  = this.getPixels();
+       
+       gray();
+       
+       for (Pixel pixelObj : pixelArray)
+           {
+               //gets the grayscale value for the current pixel (rgb are the same value, so using red as the overall value is the same as using blue or green)
+               int val = pixelObj.getRed(); 
+               if (val <= 255/4) //group 1 has the lowest values and is made dark blue
+                pixelObj.setColor(new Color(0,0,139));
+               else if (val > 255/4 && val <= 255/2) //group 2 is the second lowest and is made red
+                pixelObj.setColor(Color.red);
+               else if (val > 255/2 && val <= (3 * 255/4)) //group 3 is the second highest and is made a light blue
+                pixelObj.setColor(new Color(0,191,255));
+               else if (val > (3 * 255/4)) //group 4 has the highest values and is made off white
+                pixelObj.setColor(new Color(253,253,253));
+           }
+   }
+   
+   public void myColor()
+   {
+       Pixel[] pixelArray  = this.getPixels();
+       
+       gray();
+       
+       for (Pixel pixelObj : pixelArray)
+           {
+            //gets the grayscale value for the current pixel
+            int val = pixelObj.getRed(); 
+            if (val <= 255/4) //group 1 has the lowest values and is made black
+                pixelObj.setColor(Color.black);
+            else if (val > 255/4 && val <= 255/2) //group 2 is the second lowest and is made violet
+                pixelObj.setColor(new Color(238,130,238));
+            else if (val > 255/2 && val <= (3 * 255/4)) //group 3 is the second highest and is made green
+                pixelObj.setColor(Color.green);
+            else if (val > (3 * 255/4)) //group 4 has the highest values and is made tomato
+                pixelObj.setColor(new Color(255,99,71));
+           }
+   }
+   
    public void nega()
    {
      int val, val2, val3;
@@ -151,6 +193,28 @@ public class Picture extends SimplePicture
        }
    }
    
+   public void flip(String sourceFile)
+   {
+       Picture sourcePicture = new Picture(sourceFile);
+       
+       Pixel sourcePixel = null;
+       Pixel targetPixel = null;
+       
+        for(int y = 0; y < sourcePicture.getHeight() / 2; y++)
+       {
+           //loop through the rows
+           for (int x = 0, targetY = 0; x < sourcePicture.getWidth(); x++)
+           {
+               //set the target pixel color to the source pixel color
+               sourcePixel = sourcePicture.getPixel(x, y);
+               targetPixel = this.getPixel(sourcePicture.getWidth() - 1 - x, sourcePicture.getHeight() - 1 - y);
+               Color temp = sourcePixel.getColor();
+               sourcePixel.setColor(sourcePixel.getColor());
+               targetPixel.setColor(temp);
+           }
+       }
+   }
+   
    public void mirrorVertical(String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -203,6 +267,63 @@ public class Picture extends SimplePicture
        {
            //loop through the rows
            for (int sourceY = 0, targetY = 0; sourceY < sourcePicture.getHeight(); sourceY= sourceY + 2, targetY++)
+           {
+               //set the target pixel color to the source pixel color
+               sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
+               targetPixel = this.getPixel(targetX, targetY);
+               targetPixel.setColor(sourcePixel.getColor());
+           }
+       }
+   }
+   
+   public void quad(String sourceFile)
+   {
+       Picture sourcePicture = new Picture(sourceFile);
+       
+       Pixel sourcePixel = null;
+       Pixel targetPixel = null;
+       
+       //loop through the columns
+       for(int sourceX = 0, targetX = 0; sourceX < sourcePicture.getWidth(); sourceX= sourceX + 2, targetX++)
+       {
+           //loop through the rows
+           for (int sourceY = 0, targetY = 0; sourceY < sourcePicture.getHeight(); sourceY= sourceY + 2, targetY++)
+           {
+               //set the target pixel color to the source pixel color
+               sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
+               targetPixel = this.getPixel(targetX, targetY);
+               targetPixel.setColor(sourcePixel.getColor());
+           }
+       }
+       
+       for(int sourceX = 0, targetX = sourcePicture.getWidth() / 2; sourceX < sourcePicture.getWidth(); sourceX= sourceX + 2, targetX++)
+       {
+           //loop through the rows
+           for (int sourceY = 0, targetY = 0; sourceY < sourcePicture.getHeight(); sourceY= sourceY + 2, targetY++)
+           {
+               //set the target pixel color to the source pixel color
+               sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
+               targetPixel = this.getPixel(targetX, targetY);
+               targetPixel.setColor(sourcePixel.getColor());
+           }
+       }
+       
+       for(int sourceX = 0, targetX = 0; sourceX < sourcePicture.getWidth(); sourceX= sourceX + 2, targetX++)
+       {
+           //loop through the rows
+           for (int sourceY = 0, targetY = sourcePicture.getHeight() / 2; sourceY < sourcePicture.getHeight(); sourceY= sourceY + 2, targetY++)
+           {
+               //set the target pixel color to the source pixel color
+               sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
+               targetPixel = this.getPixel(targetX, targetY);
+               targetPixel.setColor(sourcePixel.getColor());
+           }
+       }
+       
+       for(int sourceX = 0, targetX = sourcePicture.getWidth() / 2; sourceX < sourcePicture.getWidth(); sourceX= sourceX + 2, targetX++)
+       {
+           //loop through the rows
+           for (int sourceY = 0, targetY = sourcePicture.getHeight() / 2; sourceY < sourcePicture.getHeight(); sourceY= sourceY + 2, targetY++)
            {
                //set the target pixel color to the source pixel color
                sourcePixel = sourcePicture.getPixel(sourceX, sourceY);

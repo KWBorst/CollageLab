@@ -18,6 +18,6 @@ USER INSTRUCTIONS:
 4: HorizontalFlip & Color Swap
 5: Recursion
 6: Blend
-7: Flipped Gray
+7: Flipped? Gray
 8: Four of my Color Scheme
 9: Shepard Fairey
