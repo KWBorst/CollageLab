@@ -32,6 +32,7 @@ public class Picture extends SimplePicture
 
   ////////////////////// methods ///////////////////////////////////////
 
+  //turns the picture into a grayscale version
   public void gray()
   {
       Pixel[] pixelArray  = this.getPixels();
@@ -54,6 +55,7 @@ public class Picture extends SimplePicture
        }
    }
    
+   //swaps the picture's red value with its green value, its blue value with its red value, and its green value with its blue value
    public void colorSwap()
    {
     Pixel[] pixelArray  = this.getPixels();
@@ -73,6 +75,7 @@ public class Picture extends SimplePicture
     }
    }
 
+   //turns the picture into a shepard fairey version
    public void shep()
    {
        Pixel[] pixelArray  = this.getPixels();
@@ -94,6 +97,7 @@ public class Picture extends SimplePicture
            }
    }
    
+   //applies my own original color palette to the picture
    public void myColor()
    {
        Pixel[] pixelArray  = this.getPixels();
@@ -115,6 +119,7 @@ public class Picture extends SimplePicture
            }
    }
    
+   //makes the picture a negated version
    public void nega()
    {
      int val, val2, val3;
@@ -134,6 +139,7 @@ public class Picture extends SimplePicture
      }  
    }
 
+   //blends the picture with the picture matching the file name in the parameter 
    public void blend(String blender)
    {
        Picture mixPicture = new Picture(blender);
@@ -153,6 +159,7 @@ public class Picture extends SimplePicture
                sourcePixel = mixPicture.getPixel(sourceX, sourceY);
                targetPixel = this.getPixel(targetX, targetY);
                
+               //averages out the individual red, green, and blue values for both pictures and sets the blend color
                sourceColor = sourcePixel.getRed();
                targetColor = targetPixel.getRed();
                blendColor = (sourceColor + targetColor) / 2;
@@ -171,6 +178,7 @@ public class Picture extends SimplePicture
        }
    }
    
+   //creates a copy of the sourceFile in the parameter at the specified coordinates of the picture calling the method
    public void copy(int xOff, int yOff, String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -193,6 +201,7 @@ public class Picture extends SimplePicture
        }
    }
    
+   //horizontally flips/mirrors the top half of the picture to the bottom, but the flipped half is in the opposite direction
    public void flip(String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -215,6 +224,7 @@ public class Picture extends SimplePicture
        }
    }
    
+   //vertically mirrors the left half of the picture to the right
    public void mirrorVertical(String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -235,6 +245,7 @@ public class Picture extends SimplePicture
        }
    } 
    
+   //horizontally mirrors the top half of the picture to the bottom
    public void mirrorHorizontal(String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -255,6 +266,7 @@ public class Picture extends SimplePicture
        }
    } 
    
+   //creates a copy of the sourceFile in the parameter that is a quarter of the sourceFile's size in the top left corner of the picture calling the method
    public void copySmaller(String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -276,6 +288,7 @@ public class Picture extends SimplePicture
        }
    }
    
+   //creates four quarter-sized copies of the sourceFile in the parameter that take up as many pixels as the original sourceFile when put together
    public void quad(String sourceFile)
    {
        Picture sourcePicture = new Picture(sourceFile);
@@ -333,6 +346,7 @@ public class Picture extends SimplePicture
        }
    }
    
+   //creates quarter-sized copies of the sourceFile in the top left corner of the sourceFile until a certain size is reached
    public void recursion(String sourceFile, int add)
    {
        Picture sourcePicture = new Picture(sourceFile);
